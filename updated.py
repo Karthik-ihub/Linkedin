@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 import pandas as pd
 from datetime import datetime
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
 import firebase_admin
@@ -20,7 +21,10 @@ def login_and_scrape(profile_link):
     # Set up Firefox with WebDriverManager on Windows
     firefox_options = FirefoxOptions()
     firefox_options.headless = False  # Set to True if you want to run headless (without opening a window)
-    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
+
+    # Use the Service class instead of executable_path
+    firefox_service = FirefoxService(GeckoDriverManager().install())
+    driver = webdriver.Firefox(service=firefox_service, options=firefox_options)
 
     # Open the LinkedIn page for the specified profile link
     driver.get(profile_link)
