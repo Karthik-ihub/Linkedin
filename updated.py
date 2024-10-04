@@ -22,8 +22,12 @@ def login_and_scrape(profile_link):
     firefox_options = FirefoxOptions()
     firefox_options.headless = False  # Set to True if you want to run headless (without opening a window)
 
-    # Use the Service class instead of executable_path
+    # Explicitly set the Firefox binary location (adjust the path to your system's location)
+    firefox_options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+
+    # Use the Service class to manage the geckodriver
     firefox_service = FirefoxService(GeckoDriverManager().install())
+    
     driver = webdriver.Firefox(service=firefox_service, options=firefox_options)
 
     # Open the LinkedIn page for the specified profile link
