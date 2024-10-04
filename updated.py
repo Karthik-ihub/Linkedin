@@ -22,8 +22,8 @@ def login_and_scrape(profile_link):
     firefox_options = FirefoxOptions()
     firefox_options.headless = False  # Set to True if you want to run headless (without opening a window)
 
-    # Explicitly set the Firefox binary location (adjust the path to your system's location)
-    firefox_options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+    # Correct binary location for Firefox
+    firefox_options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"  # Adjust path if necessary
 
     # Use the Service class to manage the geckodriver
     firefox_service = FirefoxService(GeckoDriverManager().install())
