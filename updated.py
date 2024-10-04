@@ -13,7 +13,7 @@ def login_and_scrape(profile_link):
     firefox_service = FirefoxService(GeckoDriverManager().install())
 
     # Initialize the Firefox driver
-    driver = webdriver.Firefox(service=firefox_service, options=firefox_options)
+    driver = webdriver.Firefox(service=firefox_service, options=FirefoxOptions)
 
     # Your scraping logic here...
     driver.get(profile_link)
